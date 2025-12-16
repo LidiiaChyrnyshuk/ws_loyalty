@@ -179,7 +179,6 @@
 			:root {
 				--whiteColor: #ffffff;
 				--blackColor: #000000;
-				--blackDisabledColor: rgba(75, 32, 32, 0.318);
 				--lilaColor: #6352ff;
 				--greyLightColor: #f1f3f5;
 				--greyColor: #4f606f;
@@ -255,11 +254,12 @@
 				-ms-flex-direction: column;
 				flex-direction: column;
 				gap: 16px;
-				padding: 8px 0 16px 0;
+				padding: 8px 0 8px 0;
 			}
 			@media (min-width: 992px) {
 				.loyalty_page_main {
 					gap: 24px;
+					padding: 8px 0 16px 0;
 				}
 			}
 			/* -----hero---- */
@@ -311,8 +311,14 @@
 			@media screen and (min-width: 992px) {
 				.loyalty_page_level_button_wrap {
 					width: 100%;
+					display: -webkit-box;
+					display: -ms-flexbox;
 					display: flex;
+					-webkit-box-align: center;
+					-ms-flex-align: center;
 					align-items: center;
+					-webkit-box-pack: justify;
+					-ms-flex-pack: justify;
 					justify-content: center;
 					padding: 0;
 				}
@@ -323,8 +329,14 @@
 				border-radius: 8px;
 				background-color: var(--lilaColor) !important;
 				color: var(--whiteColor) !important;
+				display: -webkit-box;
+				display: -ms-flexbox;
 				display: flex;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
 				align-items: center;
+				-webkit-box-pack: justify;
+				-ms-flex-pack: justify;
 				justify-content: center;
 				font-family: Stolzl, Inter, -apple-system, BlinkMacSystemFont, Segoe UI,
 					Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
@@ -407,9 +419,9 @@
 				border-radius: 16px;
 				background-color: var(--greyLightColor) !important;
 			}
-			/* .item-3 {
+			.item-3 {
 				height: 276px;
-			} */
+			}
 			@media screen and (min-width: 992px) {
 				.item-1 {
 					height: 276px;
@@ -465,6 +477,7 @@
 				line-height: 16px;
 				font-weight: 500 !important;
 				color: var(--greyDarkColor) !important;
+				padding-right: 16px;
 			}
 			.loyalty_page_benefits_button_wrap {
 				width: 100%;
@@ -472,8 +485,14 @@
 			@media screen and (min-width: 992px) {
 				.loyalty_page_benefits_button_wrap {
 					width: 100%;
+					display: -webkit-box;
+					display: -ms-flexbox;
 					display: flex;
+					-webkit-box-align: center;
+					-ms-flex-align: center;
 					align-items: center;
+					-webkit-box-pack: justify;
+					-ms-flex-pack: justify;
 					justify-content: center;
 				}
 			}
@@ -500,53 +519,102 @@
 			}
 
 			/* -----quastions */
-			.faq {
-				max-width: 760px;
-				margin: 0 auto;
-				padding: 20px;
-				border: 2px dashed #4db6ff;
-				border-radius: 8px;
+			.loyalty_page_question {
+				width: 100%;
+				padding: 0 8px 0 8px;
 			}
-
-			.faq-title {
-				font-size: 24px;
-				font-weight: 700;
-				margin-bottom: 15px;
-				display: flex;
+			@media screen and (min-width: 992px) {
+				.loyalty_page_question {
+					padding: 0 16px 0 16px;
+				}
+			}
+			.loyalty_page_question_title {
+				display: inline-flex;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
 				align-items: center;
-				gap: 6px;
+				-webkit-box-pack: justify;
+				-ms-flex-pack: justify;
+				justify-content: center;
+				gap: 8px;
+				margin: 0 0 12px 0;
+			}
+			.loyalty_page_question_title_text {
+				display: inline-flex;
+				font-family: Stolzl, Inter, -apple-system, BlinkMacSystemFont, Segoe UI,
+					Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+					Helvetica Neue, sans-serif !important;
+				font-size: 16px !important;
+				line-height: 100%;
+				font-weight: 500 !important;
+				color: var(--greyDarkColor) !important;
+			}
+			@media screen and (min-width: 992px) {
+				.loyalty_page_question_title_text {
+					font-size: 20px;
+					line-height: 24px;
+				}
+			}
+			.loyalty_page_question_list {
+				background-color: var(--greyLightColor) !important;
+				border-radius: 12px;
 			}
 
-			.faq-item {
-				background: #f9f9fb;
-				border-radius: 6px;
-				margin-bottom: 10px;
+			.loyalty_page_question_list_item {
+				background: #f9f9fb !important;
 				padding: 0 16px;
 				overflow: hidden;
 				transition: color 0.25s ease;
 			}
-
-			.faq-item summary {
-				cursor: pointer;
-				font-size: 18px;
-				padding: 18px 0;
-				font-weight: 600;
-				list-style: none;
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
+			.faq-item-1 {
+				border-top-left-radius: 12px;
+				border-top-right-radius: 12px;
+				border-bottom: 1px solid #dbe1e7 !important;
 			}
-			.faq-item[open] summary {
-				color: #7b3fff; /* фіолетовий або будь-який інший */
+			.faq-item-2 {
+				border-bottom: 1px solid #dbe1e7 !important;
+			}
+			.faq-item-3 {
+				border-bottom: 1px solid #dbe1e7 !important;
+			}
+			.faq-item-4 {
+				border-bottom: 1px solid #dbe1e7 !important;
+			}
+			.faq-item-5 {
+				border-bottom-left-radius: 12px;
+				border-bottom-right-radius: 12px;
+				border-top: 1px solid #dbe1e7 !important;
+			}
+
+			.loyalty_page_question_list_item summary {
+				cursor: pointer;
+				font-size: 14px;
+				line-height: 16px;
+				padding: 10px 8px 10px 8px;
+				font-weight: 500;
+				list-style: none;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				-webkit-box-pack: justify;
+				-ms-flex-pack: justify;
+				justify-content: space-between;
+				color: var(--greyDarkColor) !important;
+			}
+			.loyalty_page_question_list_item[open] summary {
+				color: #7b3fff !important;
 			}
 
 			/* Прибираємо стандартний трикутник */
-			.faq-item summary::-webkit-details-marker {
+			.loyalty_page_question_list_item summary::-webkit-details-marker {
 				display: none;
 			}
 
 			/* Стрілочка */
-			.faq-item summary::after {
+			.loyalty_page_question_list_item summary::after {
 				content: "";
 				width: 20px;
 				height: 20px;
@@ -554,15 +622,20 @@
 				transition: transform 0.25s ease;
 			}
 
-			.faq-item[open] summary::after {
+			.loyalty_page_question_list_item[open] summary::after {
 				background-image: url("./images/arrows_open.png");
 			}
 
-			.faq-content {
-				padding: 0 0 18px 0;
-				font-size: 15px;
-				line-height: 1.6;
-				color: #555;
+			.loyalty_page_question_list_item_content {
+				font-family: Stolzl, Inter, -apple-system, BlinkMacSystemFont, Segoe UI,
+					Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+					Helvetica Neue, sans-serif !important;
+				font-weight: 400;
+				font-size: 12px;
+				line-height: 16px;
+				color: var(--greyColor) !important;
+				border-top: 1px solid #dbe1e7 !important;
+				padding: 16px;
 				animation: fade 0.3s ease;
 			}
 
@@ -681,15 +754,21 @@
 						</div>
 					</section>
 					<section class="loyalty_page_question">
-						<section class="faq">
-							<h2 class="faq-title">
-								<span><img src="./images/faqs_icon.png" alt="" /></span>
-								<span>FAQs</span>
-							</h2>
+						<h2 class="loyalty_page_question_title">
+							<span
+								><img
+									src="./images/faqs_icon.png"
+									alt="faqs"
+									width="24"
+									height="24"
+							/></span>
+							<span class="loyalty_page_question_title_text">FAQs</span>
+						</h2>
 
-							<details class="faq-item" open>
+						<div class="loyalty_page_question_list">
+							<details class="loyalty_page_question_list_item faq-item-1">
 								<summary>What is the Loyalty Program?</summary>
-								<div class="faq-content">
+								<div class="loyalty_page_question_list_item_content">
 									Our Loyalty Program is a rewarding system designed to
 									appreciate our players for staying active. By placing bets,
 									you earn points that help you climb through loyalty levels and
@@ -700,28 +779,60 @@
 								</div>
 							</details>
 
-							<details class="faq-item">
+							<details class="loyalty_page_question_list_item faq-item-2">
 								<summary>How to increase my loyalty level?</summary>
-								<div class="faq-content">Content here...</div>
+								<div class="loyalty_page_question_list_item_content">
+									The more you play at WEI$$.BET, the faster you can level up
+									and unlock all the top-tier benefits. Stay with us and enjoy
+									the ultimate gaming experience!
+								</div>
 							</details>
 
-							<details class="faq-item">
+							<details class="loyalty_page_question_list_item faq-item-3">
 								<summary>
-									How many bets do I need to place to earn 1 point?
+									How many bets do I need to place to<br />
+									earn 1 point?
 								</summary>
-								<div class="faq-content">Content here...</div>
+								<div class="loyalty_page_question_list_item_content">
+									The number of bets required to earn 1 point depends on the
+									game type and the current exchange rate. Points are calculated
+									using the following formula:<br />
+
+									Points Amount = (Bet Amount × Bet Wager) / Exchange Rate<br />
+
+									Where:<br />
+
+									Bet Wager - a coefficient that depends on the type of game you
+									are playing. Exchange Rate - the current actual rate of 1
+									WEFT. You can view all Bet Wagers in the Play to Earn section
+									on the Analytics page. For example, to earn 1 point at Slots
+									you need to bet ~15 USDT, in Live Games ~150 USDT. The more
+									points you collect, the higher your loyalty level becomes.
+								</div>
 							</details>
 
-							<details class="faq-item">
+							<details class="loyalty_page_question_list_item faq-item-4">
 								<summary>What is Level up bonus?</summary>
-								<div class="faq-content">Content here...</div>
+								<div class="loyalty_page_question_list_item_content">
+									To celebrate our players' progress, we grant a special Level
+									Up Bonus each time they reach a new level. Depending on the
+									level reached, this bonus may include free spins, cash
+									rewards. The higher the level, the better the bonus - each
+									milestone unlocks valuable rewards for our players.
+								</div>
 							</details>
 
-							<details class="faq-item">
+							<details class="loyalty_page_question_list_item faq-item-5">
 								<summary>What is daily cashback?</summary>
-								<div class="faq-content">Content here...</div>
+								<div class="loyalty_page_question_list_item_content">
+									Daily Cashback is a partial return of your lost funds for the
+									previous day - a kind of ‘insurance’ that helps you stay in
+									the game and try your luck again. The amount depends on your
+									activity and loyalty level. You can receive from 5% to 13% of
+									your losses back on a regular basis.
+								</div>
 							</details>
-						</section>
+						</div>
 					</section>
 				</main>
 			</div>
