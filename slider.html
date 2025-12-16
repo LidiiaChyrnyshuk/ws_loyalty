@@ -48,7 +48,7 @@
 				margin: 0 0 12px 0;
 				padding: 0 8px 0 0;
 			}
-			@media screen and (min-width:992px) {
+			@media screen and (min-width: 992px) {
 				.loyalty_page_level_title_wrapper {
 					padding: 0 16px 0 0;
 				}
@@ -85,7 +85,7 @@
 				line-height: 100%;
 				font-weight: 500 !important;
 			}
-			@media screen and (min-width:992px) {
+			@media screen and (min-width: 992px) {
 				.loyalty_page_level_title_text {
 					font-size: 20px;
 					line-height: 24px;
@@ -127,19 +127,29 @@
 			#arrow-left-img {
 				transform: rotate(180deg);
 			}
-
+			.loyalty_page_level_arrows_wrap img {
+				transition: opacity 0.2s ease;
+				opacity: 0.6; 
+				
+			}
+			.loyalty_page_level_arrows_wrap a.is-disabled img {
+				opacity: 0.32;
+				pointer-events: none;
+			}
+			.loyalty_page_level_arrows_wrap a:not(.is-disabled):hover img {
+				opacity: 1;
+				
+			}
 			/* Контейнер */
 			.slider-container {
 				position: relative;
 				width: 100%;
 				overflow: hidden;
 			}
-
 			/* Трек */
 			.slider {
 				display: -webkit-box;
 				display: -ms-flexbox;
-				display: flex;
 				display: flex;
 				gap: 8px;
 				transition: transform 0.35s ease;
@@ -147,20 +157,24 @@
 				cursor: grab;
 				height: 286px;
 			}
-
 			/* Картка */
 			.card {
 				flex: 0 0 248px;
 				height: 286px;
-				background: #fff;
+				background: #ffffff;
 				border-radius: 16px;
 				overflow: hidden;
+				display: -webkit-box;
+				display: -ms-flexbox;
 				display: flex;
-				justify-content: center;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
 				align-items: center;
+				-webkit-box-pack: justify;
+				-ms-flex-pack: justify;
+				justify-content: center;
 				scroll-snap-align: none;
 			}
-
 			/* ховаємо скролл */
 			.slider::-webkit-scrollbar {
 				display: none;
@@ -186,7 +200,7 @@
 						<a href="#" id="arrow-left"
 							><img
 								src="./images/buttons_arrow_right.png"
-								alt=""
+								alt="arrow-left"
 								id="arrow-left-img"
 								width="32"
 								height="32"
@@ -194,7 +208,7 @@
 						<a href="#" id="arrow-right"
 							><img
 								src="./images/buttons_arrow_right.png"
-								alt=""
+								alt="arrow-right"
 								id="arrow-right-img"
 								width="32"
 								height="32"
@@ -448,117 +462,122 @@
 			</section>
 		</div>
 		<script>
-document.addEventListener("DOMContentLoaded", () => {
-	const track = document.getElementById("levels-slider");
-	const slides = Array.from(track.children);
+			document.addEventListener("DOMContentLoaded", () => {
+				const track = document.getElementById("levels-slider");
+				const slides = Array.from(track.children);
 
-	const btnLeft = document.getElementById("arrow-left");
-	const btnRight = document.getElementById("arrow-right");
-	const leftImg = document.getElementById("arrow-left-img");
-	const rightImg = document.getElementById("arrow-right-img");
+				const btnLeft = document.getElementById("arrow-left");
+				const btnRight = document.getElementById("arrow-right");
+				const leftImg = document.getElementById("arrow-left-img");
+				const rightImg = document.getElementById("arrow-right-img");
 
-	let position = 0;
-	let cardWidth = slides[0].offsetWidth + 8;
-	let maxShift;
+				let position = 0;
+				let cardWidth = slides[0].offsetWidth + 8;
+				let maxShift;
 
-	function recalc() {
-		cardWidth = slides[0].offsetWidth + 8;
-		maxShift = -(track.scrollWidth - track.parentElement.clientWidth);
+				function recalc() {
+					cardWidth = slides[0].offsetWidth + 8;
+					maxShift = -(track.scrollWidth - track.parentElement.clientWidth);
 
-		// Центрування картки №2 на початку (0-based)
-		const containerWidth = track.parentElement.clientWidth;
-		const targetIndex = 0; // картка 2
-		position = -(targetIndex * cardWidth) + (containerWidth / 2 - cardWidth / 2);
+					// Центрування картки №2 на початку (0-based)
+					const containerWidth = track.parentElement.clientWidth;
+					const targetIndex = 0; // картка 2
+					position =
+						-(targetIndex * cardWidth) + (containerWidth / 2 - cardWidth / 2);
 
-		if (position > 0) position = 0;
-		if (position < maxShift) position = maxShift;
+					if (position > 0) position = 0;
+					if (position < maxShift) position = maxShift;
 
-		track.style.transform = `translateX(${position}px)`;
-		updateArrowsOpacity();
-	}
+					track.style.transform = `translateX(${position}px)`;
+					updateArrowsOpacity();
+				}
 
-	window.addEventListener("resize", recalc);
-	recalc();
+				window.addEventListener("resize", recalc);
+				recalc();
 
-	// --- Встановлюємо початкову opacity ---
-	leftImg.style.opacity = position < 0 ? 1 : 0.4;
-	rightImg.style.opacity = position <= maxShift ? 0.4 : 1;
+				function updateArrowsOpacity() {
+					// ліва стрілка
+					if (position >= 0) {
+						btnLeft.classList.add("is-disabled");
+					} else {
+						btnLeft.classList.remove("is-disabled");
+					}
 
-	function updateArrowsOpacity() {
-		leftImg.style.opacity = position < 0 ? 1 : 0.4;
-		rightImg.style.opacity = position <= maxShift ? 0.4 : 1;
-	}
+					// права стрілка
+					if (position <= maxShift) {
+						btnRight.classList.add("is-disabled");
+					} else {
+						btnRight.classList.remove("is-disabled");
+					}
+				}
 
-	// --- КНОПКИ ---
-	btnRight.addEventListener("click", (e) => {
-		e.preventDefault();
-		moveSlide(-1);
-	});
+				// --- КНОПКИ ---
+				btnRight.addEventListener("click", (e) => {
+					e.preventDefault();
+					moveSlide(-1);
+				});
 
-	btnLeft.addEventListener("click", (e) => {
-		e.preventDefault();
-		moveSlide(1);
-	});
+				btnLeft.addEventListener("click", (e) => {
+					e.preventDefault();
+					moveSlide(1);
+				});
 
-	function moveSlide(direction) {
-		position += direction * cardWidth;
-		if (position > 0) position = 0;
-		if (position < maxShift) position = maxShift;
+				function moveSlide(direction) {
+					position += direction * cardWidth;
+					if (position > 0) position = 0;
+					if (position < maxShift) position = maxShift;
 
-		track.style.transition = "transform .35s ease";
-		track.style.transform = `translateX(${position}px)`;
-		updateArrowsOpacity();
-	}
+					track.style.transition = "transform .35s ease";
+					track.style.transform = `translateX(${position}px)`;
+					updateArrowsOpacity();
+				}
 
-	// --- DRAG / SWIPE ---
-	let startX = 0;
-	let dragging = false;
-	let startPos = 0;
+				// --- DRAG / SWIPE ---
+				let startX = 0;
+				let dragging = false;
+				let startPos = 0;
 
-	function dragStart(e) {
-		dragging = true;
-		track.style.transition = "none";
-		startX = e.pageX || e.touches[0].pageX;
-		startPos = position;
-	}
+				function dragStart(e) {
+					dragging = true;
+					track.style.transition = "none";
+					startX = e.pageX || e.touches[0].pageX;
+					startPos = position;
+				}
 
-	function dragMove(e) {
-		if (!dragging) return;
-		const x = e.pageX || e.touches[0].pageX;
-		const delta = x - startX;
-		position = startPos + delta;
+				function dragMove(e) {
+					if (!dragging) return;
+					const x = e.pageX || e.touches[0].pageX;
+					const delta = x - startX;
+					position = startPos + delta;
 
-		if (position > 0) position = 0;
-		if (position < maxShift) position = maxShift;
+					if (position > 0) position = 0;
+					if (position < maxShift) position = maxShift;
 
-		track.style.transform = `translateX(${position}px)`;
-	}
+					track.style.transform = `translateX(${position}px)`;
+				}
 
-	function dragEnd() {
-		if (!dragging) return;
-		dragging = false;
+				function dragEnd() {
+					if (!dragging) return;
+					dragging = false;
 
-		// "Snap" до центру найближчої картки
-		const containerWidth = track.parentElement.clientWidth;
-		const centerOffset = containerWidth / 2 - cardWidth / 2;
-		const index = Math.round((-position + centerOffset) / cardWidth);
-		position = -(index * cardWidth) + centerOffset;
+					// "Snap" до центру найближчої картки
+					const containerWidth = track.parentElement.clientWidth;
+					const centerOffset = containerWidth / 2 - cardWidth / 2;
+					const index = Math.round((-position + centerOffset) / cardWidth);
+					position = -(index * cardWidth) + centerOffset;
 
-		if (position > 0) position = 0;
-		if (position < maxShift) position = maxShift;
+					if (position > 0) position = 0;
+					if (position < maxShift) position = maxShift;
 
-		track.style.transition = "transform .35s ease";
-		track.style.transform = `translateX(${position}px)`;
-		updateArrowsOpacity();
-	}
+					track.style.transition = "transform .35s ease";
+					track.style.transform = `translateX(${position}px)`;
+					updateArrowsOpacity();
+				}
 
-
-
-	track.addEventListener("touchstart", dragStart);
-	window.addEventListener("touchmove", dragMove);
-	window.addEventListener("touchend", dragEnd);
-});
-
+				track.addEventListener("touchstart", dragStart);
+				window.addEventListener("touchmove", dragMove);
+				window.addEventListener("touchend", dragEnd);
+			});
 		</script>
 	</body>
 </html>

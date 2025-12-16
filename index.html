@@ -180,6 +180,7 @@
 				--whiteColor: #ffffff;
 				--blackColor: #000000;
 				--lilaColor: #6352ff;
+				--darkLilaColor: #584ed4;
 				--greyLightColor: #f1f3f5;
 				--greyColor: #4f606f;
 				--greyDarkColor: #34414d;
@@ -327,7 +328,7 @@
 				width: 100%;
 				min-height: 40px;
 				border-radius: 8px;
-				background-color: var(--lilaColor) !important;
+				background-color: var(--lilaColor);
 				color: var(--whiteColor) !important;
 				display: -webkit-box;
 				display: -ms-flexbox;
@@ -344,6 +345,9 @@
 				font-weight: 400 !important;
 				font-size: 14px;
 				line-height: 16px;
+			}
+			.loyalty_page_level_button:hover {
+				background-color: var(--darkLilaColor);
 			}
 			@media screen and (min-width: 992px) {
 				.loyalty_page_level_button {
@@ -500,7 +504,7 @@
 				width: 100%;
 				min-height: 40px;
 				border-radius: 8px;
-				background-color: var(--lilaColor) !important;
+				background-color: var(--lilaColor);
 				color: var(--whiteColor) !important;
 				display: flex;
 				align-items: center;
@@ -511,6 +515,9 @@
 				font-weight: 400 !important;
 				font-size: 14px;
 				line-height: 16px;
+			}
+			.loyalty_page_benefits_button:hover {
+				background-color: var(--darkLilaColor);
 			}
 			@media screen and (min-width: 992px) {
 				.loyalty_page_benefits_button {
@@ -562,7 +569,7 @@
 
 			.loyalty_page_question_list_item {
 				background: #f9f9fb !important;
-				padding: 0 16px;
+				/* padding: 0 16px 0 0; */
 				overflow: hidden;
 				transition: color 0.25s ease;
 			}
@@ -590,7 +597,7 @@
 				cursor: pointer;
 				font-size: 14px;
 				line-height: 16px;
-				padding: 10px 8px 10px 8px;
+				padding: 8px;
 				font-weight: 500;
 				list-style: none;
 				display: -webkit-box;
@@ -604,10 +611,23 @@
 				justify-content: space-between;
 				color: var(--greyDarkColor) !important;
 			}
+			@media screen and (min-width: 992px) {
+				.loyalty_page_question_list_item summary {
+					padding: 16px;
+				}
+			}
 			.loyalty_page_question_list_item[open] summary {
 				color: #7b3fff !important;
+				padding-left: 16px;
 			}
-
+			.loyalty_page_question_list_item_text {
+				gap: 32px;
+			}
+			@media screen and (min-width: 992) {
+				.loyalty_page_question_list_item_text {
+					gap: 8px;
+				}
+			}
 			/* Прибираємо стандартний трикутник */
 			.loyalty_page_question_list_item summary::-webkit-details-marker {
 				display: none;
@@ -789,9 +809,8 @@
 							</details>
 
 							<details class="loyalty_page_question_list_item faq-item-3">
-								<summary>
-									How many bets do I need to place to<br />
-									earn 1 point?
+								<summary class="loyalty_page_question_list_item_text">
+									How many bets do I need to place to earn 1 point?
 								</summary>
 								<div class="loyalty_page_question_list_item_content">
 									The number of bets required to earn 1 point depends on the
