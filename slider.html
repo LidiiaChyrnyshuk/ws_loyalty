@@ -129,8 +129,7 @@
 			}
 			.loyalty_page_level_arrows_wrap img {
 				transition: opacity 0.2s ease;
-				opacity: 0.6; 
-				
+				opacity: 0.6;
 			}
 			.loyalty_page_level_arrows_wrap a.is-disabled img {
 				opacity: 0.32;
@@ -138,7 +137,6 @@
 			}
 			.loyalty_page_level_arrows_wrap a:not(.is-disabled):hover img {
 				opacity: 1;
-				
 			}
 			/* Контейнер */
 			.slider-container {
@@ -158,6 +156,7 @@
 				height: 286px;
 			}
 			/* Картка */
+
 			.card {
 				flex: 0 0 248px;
 				height: 286px;
@@ -178,6 +177,9 @@
 			/* ховаємо скролл */
 			.slider::-webkit-scrollbar {
 				display: none;
+			}
+			#levels-slider {
+				touch-action: pan-y;
 			}
 		</style>
 	</head>
@@ -479,9 +481,9 @@
 					cardWidth = slides[0].offsetWidth + 8;
 					maxShift = -(track.scrollWidth - track.parentElement.clientWidth);
 
-					// Центрування картки №2 на початку (0-based)
+					// Центрування картки №1 на початку (0-based)
 					const containerWidth = track.parentElement.clientWidth;
-					const targetIndex = 0; // картка 2
+					const targetIndex = 0; 
 					position =
 						-(targetIndex * cardWidth) + (containerWidth / 2 - cardWidth / 2);
 
@@ -546,7 +548,10 @@
 
 				function dragMove(e) {
 					if (!dragging) return;
-					const x = e.pageX || e.touches[0].pageX;
+
+					e.preventDefault();
+
+					const x = e.touches[0].pageX;
 					const delta = x - startX;
 					position = startPos + delta;
 
@@ -574,9 +579,10 @@
 					updateArrowsOpacity();
 				}
 
-				track.addEventListener("touchstart", dragStart);
-				window.addEventListener("touchmove", dragMove);
-				window.addEventListener("touchend", dragEnd);
+				track.addEventListener("touchstart", dragStart, { passive: true });
+				track.addEventListener("touchmove", dragMove, { passive: false });
+				track.addEventListener("touchend", dragEnd);
+				track.addEventListener("touchcancel", dragEnd);
 			});
 		</script>
 	</body>
