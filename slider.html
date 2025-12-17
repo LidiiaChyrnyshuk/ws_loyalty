@@ -150,7 +150,7 @@
 				display: -ms-flexbox;
 				display: flex;
 				gap: 8px;
-				
+
 				will-change: transform;
 				cursor: grab;
 				height: 286px;
@@ -477,6 +477,8 @@
 				let position = 0;
 				let cardWidth = slides[0].offsetWidth + 8;
 				let maxShift;
+				let startTime = 0;
+				let velocity = 0;
 
 				function recalc() {
 					cardWidth = slides[0].offsetWidth + 8;
@@ -484,7 +486,7 @@
 
 					// Центрування картки №1 на початку (0-based)
 					const containerWidth = track.parentElement.clientWidth;
-					const targetIndex = 0; 
+					const targetIndex = 0;
 					position =
 						-(targetIndex * cardWidth) + (containerWidth / 2 - cardWidth / 2);
 
@@ -545,6 +547,7 @@
 					track.style.transition = "none";
 					startX = e.pageX || e.touches[0].pageX;
 					startPos = position;
+					startTime = Date.now();
 				}
 
 				function dragMove(e) {
@@ -556,6 +559,11 @@
 					const delta = x - startX;
 					position = startPos + delta;
 
+					const elapsed = Date.now() - startTime;
+					if (elapsed > 0) {
+						velocity = delta / elapsed; // px/ms
+					}
+
 					if (position > 0) position = 0;
 					if (position < maxShift) position = maxShift;
 
@@ -566,17 +574,28 @@
 					if (!dragging) return;
 					dragging = false;
 
-					// "Snap" до центру найближчої картки
 					const containerWidth = track.parentElement.clientWidth;
 					const centerOffset = containerWidth / 2 - cardWidth / 2;
-					const index = Math.round((-position + centerOffset) / cardWidth);
+
+					let index = Math.round((-position + centerOffset) / cardWidth);
+
+					// 🚀 FAST SWIPE
+					const speed = Math.abs(velocity);
+					if (speed > 0.5) {
+						const boost = Math.min(4, Math.ceil(speed * 2));
+						if (velocity < 0) index += boost;
+						else index -= boost;
+					}
+
 					position = -(index * cardWidth) + centerOffset;
 
 					if (position > 0) position = 0;
 					if (position < maxShift) position = maxShift;
 
-					track.style.transition = "transform .35s ease";
+					track.style.transition =
+						"transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1)";
 					track.style.transform = `translateX(${position}px)`;
+
 					updateArrowsOpacity();
 				}
 
