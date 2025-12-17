@@ -154,7 +154,8 @@
 				will-change: transform;
 				cursor: grab;
 				height: 286px;
-				transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+
+				touch-action: pan-y;
 			}
 			/* Картка */
 
@@ -223,7 +224,7 @@
 						<div id="slide1" class="card">
 							<img
 								src="./images/Cashback card - default.png"
-								alt="cadr"
+								alt="card"
 								width="248"
 								height="286"
 							/>
@@ -532,7 +533,8 @@
 					if (position > 0) position = 0;
 					if (position < maxShift) position = maxShift;
 
-					track.style.transition = "transform .35s ease";
+					track.style.transition =
+						"transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1)";
 					track.style.transform = `translateX(${position}px)`;
 					updateArrowsOpacity();
 				}
@@ -548,6 +550,7 @@
 					startX = e.pageX || e.touches[0].pageX;
 					startPos = position;
 					startTime = Date.now();
+					velocity = 0;
 				}
 
 				function dragMove(e) {
@@ -555,13 +558,17 @@
 
 					e.preventDefault();
 
-					const x = e.touches[0].pageX;
+					const x = e.touches ? e.touches[0].pageX : e.pageX;
+
 					const delta = x - startX;
 					position = startPos + delta;
 
 					const elapsed = Date.now() - startTime;
 					if (elapsed > 0) {
 						velocity = delta / elapsed; // px/ms
+
+						// clamp для iOS
+						velocity = Math.max(-3, Math.min(3, velocity));
 					}
 
 					if (position > 0) position = 0;
@@ -577,6 +584,7 @@
 					const containerWidth = track.parentElement.clientWidth;
 					const centerOffset = containerWidth / 2 - cardWidth / 2;
 
+					/* let index = Math.max(0, Math.min(slides.length - 1, index)); */
 					let index = Math.round((-position + centerOffset) / cardWidth);
 
 					// 🚀 FAST SWIPE
