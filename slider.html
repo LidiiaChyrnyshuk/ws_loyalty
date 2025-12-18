@@ -475,6 +475,12 @@
 				const leftImg = document.getElementById("arrow-left-img");
 				const rightImg = document.getElementById("arrow-right-img");
 
+				const HOLD_DELAY = 300;
+				const FAST_STEP = 3;
+				const FAST_INTERVAL = 80;
+				let holdTimeout = null;
+				let holdInterval = null;
+
 				let position = 0;
 				let cardWidth = slides[0].offsetWidth + 8;
 				let maxShift;
@@ -606,6 +612,51 @@
 
 					updateArrowsOpacity();
 				}
+
+				//  прокрутка на кнопці //
+				function startHold(direction) {
+					holdTimeout = setTimeout(() => {
+						holdInterval = setInterval(() => {
+							position += direction * cardWidth * FAST_STEP;
+
+							if (position > 0) position = 0;
+							if (position < maxShift) position = maxShift;
+
+							track.style.transition = "none";
+							track.style.transform = `translateX(${position}px)`;
+							updateArrowsOpacity();
+						}, FAST_INTERVAL);
+					}, HOLD_DELAY);
+				}
+
+				function stopHold() {
+					clearTimeout(holdTimeout);
+					clearInterval(holdInterval);
+					holdTimeout = null;
+					holdInterval = null;
+
+					// легкий snap після швидкої прокрутки
+					track.style.transition =
+						"transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1)";
+				}
+				btnRight.addEventListener("mousedown", () => startHold(-1));
+				btnRight.addEventListener("touchstart", () => startHold(-1), {
+					passive: true,
+				});
+
+				btnRight.addEventListener("mouseup", stopHold);
+				btnRight.addEventListener("mouseleave", stopHold);
+				btnRight.addEventListener("touchend", stopHold);
+				btnRight.addEventListener("touchcancel", stopHold);
+				btnLeft.addEventListener("mousedown", () => startHold(1));
+				btnLeft.addEventListener("touchstart", () => startHold(1), {
+					passive: true,
+				});
+
+				btnLeft.addEventListener("mouseup", stopHold);
+				btnLeft.addEventListener("mouseleave", stopHold);
+				btnLeft.addEventListener("touchend", stopHold);
+				btnLeft.addEventListener("touchcancel", stopHold);
 
 				track.addEventListener("touchstart", dragStart, { passive: true });
 				track.addEventListener("touchmove", dragMove, { passive: false });
