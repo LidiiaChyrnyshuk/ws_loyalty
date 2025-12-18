@@ -184,7 +184,7 @@
 				--greyLightColor: #f1f3f5;
 				--greyColor: #4f606f;
 				--greyDarkColor: #34414d;
-				font-size: 12px;
+				
 			}
 			html {
 				height: 100%;
@@ -204,7 +204,7 @@
 				max-width: 960px;
 				width: 100%;
 			}
-			@media (max-width: 992px) {
+			@media (max-width: 959px) {
 				.loyalty_page_container {
 					max-width: 500px;
 				}
@@ -255,12 +255,12 @@
 				-ms-flex-direction: column;
 				flex-direction: column;
 				gap: 16px;
-				padding: 8px 0 8px 0;
+				padding: 0 0 8px 0;
 			}
-			@media (min-width: 992px) {
+			@media (min-width: 960px) {
 				.loyalty_page_main {
 					gap: 24px;
-					padding: 8px 0 16px 0;
+					padding: 0 0 16px 0;
 				}
 			}
 			/* -----hero---- */
@@ -269,7 +269,7 @@
 				min-height: 104px;
 				padding: 0 8px 0 8px;
 			}
-			@media screen and (min-width: 992px) {
+			@media screen and (min-width: 960px) {
 				.loyalty_page_banner {
 					min-height: 286px;
 					padding: 0 16px 0 16px;
@@ -284,7 +284,7 @@
 					min-height: 104px;
 				}
 			}
-			@media screen and (min-width: 992px) {
+			@media screen and (min-width: 960px) {
 				.loyalty_page_banner_img {
 					min-height: 286px;
 				}
@@ -296,7 +296,7 @@
 				height: 382px;
 				padding: 0 0 0 8px;
 			}
-			@media screen and (min-width: 992px) {
+			@media screen and (min-width: 960px) {
 				.loyalty_page_level {
 					padding: 0 0 0 16px;
 				}
@@ -309,7 +309,7 @@
 				width: 100%;
 				padding: 0 8px 0 0;
 			}
-			@media screen and (min-width: 992px) {
+			@media screen and (min-width: 960px) {
 				.loyalty_page_level_button_wrap {
 					width: 100%;
 					display: -webkit-box;
@@ -343,13 +343,13 @@
 					Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
 					Helvetica Neue, sans-serif !important;
 				font-weight: 400 !important;
-				font-size: 14px;
+				font-size: 14px !important;
 				line-height: 16px;
 			}
 			.loyalty_page_level_button:hover {
 				background-color: var(--darkLilaColor);
 			}
-			@media screen and (min-width: 992px) {
+			@media screen and (min-width: 960px) {
 				.loyalty_page_level_button {
 					max-width: 156px;
 				}
@@ -359,7 +359,7 @@
 				width: 100%;
 				padding: 0 8px 0 8px;
 			}
-			@media screen and (min-width: 992px) {
+			@media screen and (min-width: 960px) {
 				.loyalty_page_benefits {
 					padding: 0 16px 0 16px;
 				}
@@ -385,7 +385,7 @@
 				font-weight: 500 !important;
 				color: var(--greyDarkColor) !important;
 			}
-			@media screen and (min-width: 992px) {
+			@media screen and (min-width: 960px) {
 				.loyalty_page_benefits_title_text {
 					font-size: 20px;
 					line-height: 24px;
@@ -398,7 +398,7 @@
 				grid-row-gap: 8px;
 				margin-bottom: 12px;
 			}
-			@media screen and (min-width: 992px) {
+			@media screen and (min-width: 960px) {
 				.loyalty_page_benefits_list {
 					display: grid;
 					grid-template-columns: repeat(2, 1fr);
@@ -418,23 +418,23 @@
 			}
 			.loyalty_page_benefits_item {
 				width: 100%;
-				height: 260px;
+				min-height: 260px;
 				padding: 8px;
 				border-radius: 16px;
 				background-color: var(--greyLightColor) !important;
 			}
 			.item-3 {
-				height: 276px;
+				min-height: 276px;
 			}
-			@media screen and (min-width: 992px) {
+			@media screen and (min-width: 960px) {
 				.item-1 {
-					height: 276px;
+					min-height: 276px;
 				}
 				.item-2 {
-					height: 276px;
+					min-height: 276px;
 				}
 				.item-3 {
-					height: 560px;
+					min-height: 560px;
 				}
 			}
 			.loyalty_page_benefits_item_img_wrap {
@@ -443,15 +443,15 @@
 				border-radius: 12px;
 				margin-bottom: 8px;
 			}
-			@media screen and (min-width: 992px) {
+			@media screen and (min-width: 960px) {
 				.item-1 .loyalty_page_benefits_item_img_wrap {
-					height: 192px;
+					min-height: 192px;
 				}
 				.item-2 .loyalty_page_benefits_item_img_wrap {
-					height: 176px;
+					min-height: 176px;
 				}
 				.item-3 .loyalty_page_benefits_item_img_wrap {
-					height: 460px;
+					min-height: 460px;
 				}
 			}
 			.loyalty_page_benefits_item_img {
@@ -459,6 +459,21 @@
 				height: 100%;
 				border-radius: 12px;
 				object-fit: cover;
+			}
+			.loyalty_page_benefits_item_img_desk {
+				display: none;
+				width: 100%;
+				height: 100%;
+				border-radius: 12px;
+				object-fit: cover;
+			}
+			@media screen and (min-width: 960px) {
+				.loyalty_page_benefits_item_img_mob {
+					display: none;
+				}
+				.loyalty_page_benefits_item_img_desk {
+					display: block;
+				}
 			}
 			.loyalty_page_benefits_item_text_wrap {
 				padding: 8px;
@@ -472,7 +487,7 @@
 				line-height: 24px;
 				font-weight: 500 !important;
 				color: var(--greyDarkColor) !important;
-				margin-bottom: 4px;
+				margin: 0 0 4px 0;
 			}
 			.loyalty_page_benefits_item_text {
 				font-family: Stolzl, Inter, -apple-system, BlinkMacSystemFont, Segoe UI,
@@ -483,11 +498,12 @@
 				font-weight: 500 !important;
 				color: var(--greyDarkColor) !important;
 				padding-right: 16px;
+				margin: 0;
 			}
 			.loyalty_page_benefits_button_wrap {
 				width: 100%;
 			}
-			@media screen and (min-width: 992px) {
+			@media screen and (min-width: 960px) {
 				.loyalty_page_benefits_button_wrap {
 					width: 100%;
 					display: -webkit-box;
@@ -514,13 +530,13 @@
 					Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
 					Helvetica Neue, sans-serif !important;
 				font-weight: 400 !important;
-				font-size: 14px;
+				font-size: 14px !important;
 				line-height: 16px;
 			}
 			.loyalty_page_benefits_button:hover {
 				background-color: var(--darkLilaColor);
 			}
-			@media screen and (min-width: 992px) {
+			@media screen and (min-width: 960px) {
 				.loyalty_page_benefits_button {
 					max-width: 156px;
 				}
@@ -531,7 +547,7 @@
 				width: 100%;
 				padding: 0 8px 0 8px;
 			}
-			@media screen and (min-width: 992px) {
+			@media screen and (min-width: 960px) {
 				.loyalty_page_question {
 					padding: 0 16px 0 16px;
 				}
@@ -557,7 +573,7 @@
 				font-weight: 500 !important;
 				color: var(--greyDarkColor) !important;
 			}
-			@media screen and (min-width: 992px) {
+			@media screen and (min-width: 960px) {
 				.loyalty_page_question_title_text {
 					font-size: 20px;
 					line-height: 24px;
@@ -612,8 +628,9 @@
 				justify-content: space-between;
 				color: var(--greyDarkColor) !important;
 			}
-			@media screen and (min-width: 992px) {
+			@media screen and (min-width: 960px) {
 				.loyalty_page_question_list_item summary {
+					font-size: 16px;
 					padding: 16px;
 				}
 			}
@@ -624,7 +641,7 @@
 			.loyalty_page_question_list_item_text {
 				gap: 32px;
 			}
-			@media screen and (min-width: 992) {
+			@media screen and (min-width: 960px) {
 				.loyalty_page_question_list_item_text {
 					gap: 8px;
 				}
@@ -674,13 +691,13 @@
 		<div class="loyalty_page_wrapper">
 			<div class="loyalty_page_container">
 				<main class="loyalty_page_main">
-					<section class="loyalty_page_banner">
+<!-- 					<section class="loyalty_page_banner">
 						<img
 							class="loyalty_page_banner_img"
 							src="./images/loyalty_hero.png"
 							alt="banner"
 						/>
-					</section>
+					</section> -->
 					<section class="loyalty_page_level">
 						<div>
 							<iframe
@@ -694,7 +711,7 @@
 						<div class="loyalty_page_level_button_wrap">
 							<a
 								class="loyalty_page_level_button"
-								href="https://weissplay2.com/cashier/deposit"
+								href="/cashier/deposit"
 								>Get your level up</a
 							>
 						</div>
@@ -749,10 +766,11 @@
 								<li class="loyalty_page_benefits_item item-3">
 									<div class="loyalty_page_benefits_item_img_wrap">
 										<img
-											class="loyalty_page_benefits_item_img"
-											src="./images/personalmanager.png"
-											alt="images/personalmanager"
+											class="loyalty_page_benefits_item_img loyalty_page_benefits_item_img_mob "
+											src="./images/benefits_girl_mob.png"
+											alt="personalmanager"
 										/>
+										<img class="loyalty_page_benefits_item_img_desk" src="./images/benefits_girl.png" alt="personalmanager">
 									</div>
 									<div class="loyalty_page_benefits_item_text_wrap">
 										<p class="loyalty_page_benefits_item_title">
@@ -769,7 +787,7 @@
 						<div class="loyalty_page_benefits_button_wrap">
 							<a
 								class="loyalty_page_benefits_button"
-								href="https://weissplay2.com/cashier/deposit"
+								href="/cashier/deposit"
 								>Try our benefits</a
 							>
 						</div>
