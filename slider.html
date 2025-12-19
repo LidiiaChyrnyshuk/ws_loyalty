@@ -46,14 +46,12 @@
 				justify-content: space-between;
 				height: 32px;
 				margin: 0 0 12px 0;
-				padding: 0 8px 0 0;
 			}
 			@media screen and (min-width: 960px) {
 				.loyalty_page_level_title_wrapper {
-					padding: 0 16px 0 0;
+					margin: 0 0 16px 0;
 				}
 			}
-
 			.loyalty_page_level_title {
 				display: inline-flex;
 				-webkit-box-align: center;
@@ -72,7 +70,7 @@
 				justify-content: center;
 			}
 			.loyalty_page_level_title img {
-				display: inline-flex; /* щоб baseline працював коректно */
+				display: inline-flex;
 			}
 
 			.loyalty_page_level_title_text {
@@ -81,7 +79,7 @@
 				font-family: Stolzl, Inter, -apple-system, BlinkMacSystemFont, Segoe UI,
 					Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
 					Helvetica Neue, sans-serif !important;
-				font-size: 16px !important;
+				font-size: 16px;
 				line-height: 100%;
 				font-weight: 500 !important;
 			}
@@ -117,10 +115,10 @@
 				-webkit-box-pack: justify;
 				-ms-flex-pack: justify;
 				justify-content: center;
-			}
-			.loyalty_page_level_arrows_wrap a {
+				border-radius: 6px;
 				outline: none;
 			}
+
 			.loyalty_page_level_arrows_wrap a img {
 				cursor: pointer;
 			}
