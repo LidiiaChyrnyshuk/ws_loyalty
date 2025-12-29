@@ -257,7 +257,7 @@
 					gap: 24px;
 				}
 			}
-			/* -----hero---- */
+			/* ----- hero ---- */
 			.loyalty_page_hero {
 				width: 100%;
 			}
@@ -303,7 +303,7 @@
 				color: var(--greyDarkColor);
 			}
 
-			/* -----slider */
+			/* ----- slider -------- */
 			.loyalty_page_level {
 				width: 100%;
 				height: 382px;
@@ -370,7 +370,7 @@
 					max-width: 156px;
 				}
 			}
-			/* -----benefits */
+			/* -------- benefits --------- */
 			.loyalty_page_benefits {
 				width: 100%;
 			}
@@ -410,7 +410,7 @@
 			.loyalty_page_benefits_list {
 				display: grid;
 				grid-template-columns: 1fr;
-				grid-template-rows: repeat(3, 1fr);
+				/* grid-template-rows: repeat(3, 1fr); */
 				grid-row-gap: 8px;
 				margin-bottom: 12px;
 			}
@@ -418,7 +418,8 @@
 				.loyalty_page_benefits_list {
 					display: grid;
 					grid-template-columns: repeat(2, 1fr);
-					grid-template-rows: repeat(2, 1fr);
+					/* grid-template-rows: repeat(2, 1fr); */
+					grid-auto-rows: auto;
 					grid-column-gap: 8px;
 					grid-row-gap: 8px;
 					margin-bottom: 16px;
@@ -435,15 +436,21 @@
 			}
 			.loyalty_page_benefits_item {
 				width: 100%;
-				height: 260px;
+				/* height: 260px; */
 				padding: 8px;
 				border-radius: 16px;
 				background-color: var(--greyLightColor) !important;
 			}
+			/* .item-1 {
+					height: 292px;
+				}
+				.item-2 {
+					height: 276px;
+				}
 			.item-3 {
-				height: 276px;
-			}
-			@media screen and (min-width: 960px) {
+				height: 308px;
+			} */
+/* 			@media screen and (min-width: 960px) {
 				.item-1 {
 					height: 276px;
 				}
@@ -453,7 +460,7 @@
 				.item-3 {
 					height: 560px;
 				}
-			}
+			} */
 			.loyalty_page_benefits_item_img_wrap {
 				width: 100%;
 				height: 160px;
@@ -493,7 +500,7 @@
 				}
 			}
 			.loyalty_page_benefits_item_text_wrap {
-				padding: 8px;
+				padding: 0 8px 8px 8px;
 			}
 			.loyalty_page_benefits_item_title {
 				font-family: Stolzl, Inter, -apple-system, BlinkMacSystemFont, Segoe UI,
@@ -514,14 +521,9 @@
 				line-height: 16px !important;
 				font-weight: 400 !important;
 				color: var(--greyDarkColor) !important;
-				padding-right: 30px;
 				margin: 0 !important;
 			}
-			@media screen and (min-width:960px) {
-				.loyalty_page_benefits_item_text {
-					padding-right: 0;
-				}
-			}
+			
 			.loyalty_page_benefits_button_wrap {
 				width: 100%;
 			}
@@ -564,7 +566,7 @@
 				}
 			}
 
-			/* -----quastions */
+			/* ----- quastions ------ */
 			.loyalty_page_question {
 				width: 100%;
 			}
@@ -777,7 +779,9 @@
 											Daily cashback
 										</div>
 										<div class="loyalty_page_benefits_item_text">
-											Get a portion of your losses back every single day.
+											Get a portion of your losses back every single day. It's
+											our way of making sure you always have a second chance to
+											play and enjoy.
 										</div>
 									</div>
 								</li>
@@ -795,7 +799,8 @@
 										</div>
 										<div class="loyalty_page_benefits_item_text">
 											On your birthday, you'll receive a special reward based on
-											your level.
+											your level, while VIP players receive an exclusive
+											birthday gift.
 										</div>
 									</div>
 								</li>
@@ -816,10 +821,12 @@
 										<div class="loyalty_page_benefits_item_title">
 											Personal manager
 										</div>
-										<p class="loyalty_page_benefits_item_text">
-											Each time you reach a new level, you'll receive a special
-											bonus as a reward for your progress.
-										</p>
+										<div class="loyalty_page_benefits_item_text">
+											Depending on your level, you'll be assigned a personal
+											manager. who will treat you like a true VIP. Feel free to
+											ask questions, share your thoughts, and provide any
+											feedback you have.
+										</div>
 									</div>
 								</li>
 							</ul>
@@ -878,12 +885,15 @@
 
 									Where:<br />
 
-									Bet Wager - a coefficient that depends on the type of game you
-									are playing. Exchange Rate - the current actual rate of 1
-									WEFT. You can view all Bet Wagers in the Play to Earn section
-									on the Analytics page. For example, to earn 1 point at Slots
-									you need to bet ~15 USDT, in Live Games ~150 USDT. The more
-									points you collect, the higher your loyalty level becomes.
+									◦ Bet Wager - a coefficient that depends on the type of game
+									you are playing.<br />
+									◦ Exchange Rate - the current actual rate of 1 WEFT.<br />
+									You can view all Bet Wagers in the Play to Earn section on the
+									Analytics page.<br />
+									For example, to earn 1 point at Slots you need to bet ~15
+									USDT, in Live Games ~150 USDT.<br />
+									The more points you collect, the higher your loyalty level
+									becomes.
 								</div>
 							</details>
 
