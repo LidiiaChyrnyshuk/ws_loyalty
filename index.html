@@ -203,7 +203,7 @@
 				/* max-width: 960px; */
 				width: 100%;
 			}
-/* 			@media (max-width: 959px) {
+			/* 			@media (max-width: 959px) {
 				.loyalty_page_container {
 					max-width: 500px;
 				}
@@ -227,9 +227,9 @@
 				font-family: Stolzl;
 				font-style: normal;
 				font-weight: 400;
-				src: url(https://d36qhe25w9jqx.cloudfront.net/landing/fonts/Stolzl-Regular.woff2)
+				src: url(https://d36qhe25w9jqx.cloudfront.net/static/font/Stolzl-Regular.woff2)
 						format("woff2"),
-					url(https://d36qhe25w9jqx.cloudfront.net/landing/fonts/Stolzl-Regular.woff)
+					url(https://d36qhe25w9jqx.cloudfront.net/static/font/Stolzl-Regular.woff)
 						format("woff");
 			}
 			@font-face {
@@ -237,9 +237,9 @@
 				font-family: Stolzl;
 				font-style: normal;
 				font-weight: 500;
-				src: url(https://d36qhe25w9jqx.cloudfront.net/landing/fonts/Stolzl-Medium.woff2)
+				src: url(https://d36qhe25w9jqx.cloudfront.net/static/font/Stolzl-Medium.woff2)
 						format("woff2"),
-					url(https://d36qhe25w9jqx.cloudfront.net/landing/fonts/Stolzl-Medium.woff)
+					url(https://d36qhe25w9jqx.cloudfront.net/static/font/Stolzl-Medium.woff)
 						format("woff");
 			}
 			.loyalty_page_main {
@@ -314,12 +314,15 @@
 					height: 390px;
 				}
 			}
-			.loyalty_page_level_slider_wrap {
+			iframe.loyalty_page_level_slider_wrap {
 				width: 100%;
 				margin-bottom: 12px;
+				font-family: Stolzl, Inter, -apple-system, BlinkMacSystemFont, Segoe UI,
+					Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+					Helvetica Neue, sans-serif !important;
 			}
 			@media screen and (min-width: 960px) {
-				.loyalty_page_level_slider_wrap {
+				iframe.loyalty_page_level_slider_wrap {
 					margin-bottom: 16px;
 				}
 			}
@@ -452,7 +455,7 @@
 			.item-3 {
 				height: 308px;
 			} */
-/* 			@media screen and (min-width: 960px) {
+			/* 			@media screen and (min-width: 960px) {
 				.item-1 {
 					height: 276px;
 				}
@@ -525,7 +528,7 @@
 				color: var(--greyDarkColor) !important;
 				margin: 0 !important;
 			}
-			
+
 			.loyalty_page_benefits_button_wrap {
 				width: 100%;
 			}
@@ -632,9 +635,7 @@
 			.faq-item-3 {
 				border-bottom: 1px solid #dbe1e7 !important;
 			}
-			.faq-item-4 {
-				border-bottom: 1px solid #dbe1e7 !important;
-			}
+			
 			.faq-item-5 {
 				border-bottom-left-radius: 12px;
 				border-bottom-right-radius: 12px;
@@ -643,7 +644,10 @@
 
 			.loyalty_page_question_list_item summary {
 				cursor: pointer;
-				font-size: 16px !important;
+				font-family: Stolzl, Inter, -apple-system, BlinkMacSystemFont, Segoe UI,
+					Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+					Helvetica Neue, sans-serif !important;
+				font-size: 14px !important;
 				line-height: 16px;
 				padding: 8px;
 				font-weight: 500;
@@ -661,11 +665,12 @@
 			}
 			@media screen and (min-width: 960px) {
 				.loyalty_page_question_list_item summary {
-					font-size: 16px !important;
+					
 					padding: 16px;
 				}
 			}
 			.loyalty_page_question_list_item[open] summary {
+				
 				color: #7b3fff !important;
 				padding-left: 16px;
 			}
@@ -897,17 +902,6 @@
 									USDT, in Live Games ~150 USDT.<br />
 									The more points you collect, the higher your loyalty level
 									becomes.
-								</div>
-							</details>
-
-							<details class="loyalty_page_question_list_item faq-item-4">
-								<summary>What is Level up bonus?</summary>
-								<div class="loyalty_page_question_list_item_content">
-									To celebrate our players' progress, we grant a special Level
-									Up Bonus each time they reach a new level. Depending on the
-									level reached, this bonus may include free spins, cash
-									rewards. The higher the level, the better the bonus - each
-									milestone unlocks valuable rewards for our players.
 								</div>
 							</details>
 
