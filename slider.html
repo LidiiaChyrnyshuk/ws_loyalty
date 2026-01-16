@@ -192,6 +192,15 @@
 			#levels-slider {
 				touch-action: pan-y;
 			}
+			/* свайп */
+			#levels-slider {
+				user-select: none;
+				cursor: grab;
+			}
+
+			#levels-slider:active {
+				cursor: grabbing;
+			}
 		</style>
 	</head>
 	<body>
@@ -204,10 +213,11 @@
 								src="./images/level_icon.png"
 								alt="level icon"
 								width="24"
-								height="24" /></span
-						><div class="loyalty_page_level_title_text"
-							>You can reach 30 levels</div
-						>
+								height="24"
+						/></span>
+						<div class="loyalty_page_level_title_text">
+							You can reach 30 levels
+						</div>
 					</div>
 					<div class="loyalty_page_level_arrows_wrap">
 						<a href="#" id="arrow-left"
@@ -562,7 +572,8 @@
 				function dragStart(e) {
 					dragging = true;
 					track.style.transition = "none";
-					startX = e.pageX || e.touches[0].pageX;
+
+					startX = e.pageX || (e.touches && e.touches[0].pageX);
 					startPos = position;
 					startTime = Date.now();
 					velocity = 0;
@@ -671,6 +682,20 @@
 				track.addEventListener("touchmove", dragMove, { passive: false });
 				track.addEventListener("touchend", dragEnd);
 				track.addEventListener("touchcancel", dragEnd);
+
+				// --- MOUSE SWIPE ---
+				track.addEventListener("mousedown", (e) => {
+					e.preventDefault();
+					dragStart(e);
+				});
+
+				document.addEventListener("mousemove", (e) => {
+					dragMove(e);
+				});
+
+				document.addEventListener("mouseup", () => {
+					dragEnd();
+				});
 			});
 		</script>
 	</body>
